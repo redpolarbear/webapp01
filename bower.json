@@ -1,0 +1,11 @@
+{
+  "name": "webapp01",
+  "description": "",
+  "main": "",
+  "authors": [
+    "matthewxu"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/redpolarbear/webapp01",
+  "private": true
+}
