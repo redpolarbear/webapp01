@@ -15,6 +15,9 @@ var express = require('express'),
 
 var app = module.exports = express();
 
+// DB Configuration
+mongoose.connect('mongodb://localhost/webapp01-dev')
+
 /**
  * Configuration
  */
