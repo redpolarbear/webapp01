@@ -5,8 +5,7 @@
             <input type="text" class="form-control" placeholder="Title" ng-model="addItem.title">
         </div> -->
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Product URL (e.g. http://shop.herschelsupply.ca/collections/backpacks/products/little-america-backpack-black-1)"
-                   ng-model="addItem.link">
+            <input type="text" class="form-control" placeholder="Product URL (e.g. http://shop.herschelsupply.ca/collections/backpacks/products/little-america-backpack-black-1)" ng-model="addItem.link">
         </div>
 
         <!-- <div class="spinner" ng-show="loading">
@@ -32,4 +31,45 @@
         <!-- <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button> -->
         <!-- </div> -->
     </form>
+</div>
+
+<div>
+    <img ng-src="{{mainImageUrl}}" class="item" />
+
+    <h1>{{item.title}}</h1>
+
+    <p>{{item.description}}</p>
+
+    <ul class="item-thumbs">
+        <li ng-repeat="img in item.imageURLs">
+            <img ng-src="{{img}}" ng-click="setImage(img)" />
+        </li>
+    </ul>
+
+    <ul class="specs">
+        <li>
+            <dl>
+                <dt>Price</dt>
+                <dd>{{item.price}}</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>Color</dt>
+                <dd>{{item.color}}</dd>
+            </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Detail Description</dt>
+            <dd ng-repeat="detail_desc in item.detail_descs">{{detail_desc}}</dd>
+          </dl>
+        </li>
+        <li>
+            <dl>
+              <dt>Dimension</dt>
+              <dd>{{item.dimension}}</dd>
+            </dl>
+        </li>
+    </ul>
 </div>

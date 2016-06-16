@@ -22,16 +22,15 @@ exports.list = function(url, cb) {
             var $dimension = $('p.dimension').html();
             var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').html();
 
-            var $detail_desc = [];
+            var $detail_descs = [];
             $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > ul > li').each(function(i, elem) {
-              $detail_desc[i] = $(this).text();
+              $detail_descs[i] = $(this).text();
             });
 
             var $imageURLs = [];
-            $('.product-image').each(function(i, elem) {
+            $('#product-thumbs > ul > li > img').each(function(i, elem) {
               $imageURLs[i] = 'http:' + $(this).attr('src');
             })
-
 
             // var $img = 'http:' + $('img.product-image').attr('src');
             // var $desc = $('.heightContainer img').attr('alt');
@@ -46,7 +45,7 @@ exports.list = function(url, cb) {
                 price: $price,
                 dimension: $dimension,
                 description: $description,
-                detail_desc: $detail_desc,
+                detail_descs: $detail_descs,
                 imageURLs: $imageURLs
                 // desc: $desc
             }

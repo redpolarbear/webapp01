@@ -7,10 +7,10 @@ h1 {
 
 /* View: Phone list */
 
-.phones {
+.items {
     list-style: none;
 }
-.phones li {
+.items li {
     clear: both;
     height: 115px;
     padding-top: 15px;
@@ -25,7 +25,7 @@ h1 {
 
 /* View: Phone detail */
 
-.phone {
+.item {
     background-color: white;
     border: 1px solid black;
     float: left;
@@ -35,16 +35,16 @@ h1 {
     padding: 2em;
     width: 400px;
 }
-.phone-thumbs {
+.item-thumbs {
     list-style: none;
     margin: 0;
 }
-.phone-thumbs img {
+.item-thumbs img {
     height: 100px;
     padding: 1em;
     width: 100px;
 }
-.phone-thumbs li {
+.item-thumbs li {
     background-color: white;
     border: 1px solid black;
     cursor: pointer;

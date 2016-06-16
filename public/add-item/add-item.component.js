@@ -21,8 +21,17 @@ angular.module('addItem').
           //route to the /api/additem/scrape, expressjs will take the scraping
           scrapeAPI.getScrapeDetails(link)
             .then(function(result) {
-
               console.log(result);
+              $scope.setImage = function setImage(imageUrl) {
+                $scope.mainImageUrl = imageUrl;
+              };
+
+              $scope.item = result.data;
+              // //render the data to the view
+              // $scope.item.name = result.data.title;
+              // $scope.item.description = result.data.description;
+              // $scope.item.images = result.data.imageURLs;
+              $scope.setImage($scope.item.imageURLs[0]);
             })
         };
 
