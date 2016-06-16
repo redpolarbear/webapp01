@@ -3,7 +3,6 @@
 angular.module('addItem').
   component('addItem', {
     templateUrl: 'add-item/add-item.template.html',
-    // templateUrl: 'add-item/add-item.template.html',
     controller: ['$scope', 'scrapeAPI', function AddItemController($scope, scrapeAPI) {
 
       this.getScrapePost = function getScrapePost() {
@@ -21,8 +20,9 @@ angular.module('addItem').
           console.log(link.url);
           //route to the /api/additem/scrape, expressjs will take the scraping
           scrapeAPI.getScrapeDetails(link)
-            .then(function(data) {
-              console.log(data);
+            .then(function(result) {
+
+              console.log(result);
             })
         };
 
