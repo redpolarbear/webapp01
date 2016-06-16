@@ -2,11 +2,16 @@
  * Main Application Routes
  */
 'use strict';
+var express = require('express');
+var router = express.Router();
 
-app.route('/')
-    .get(function(req, res) {
-        res.sendFile('index.html');
-    });
+// app.use('/api/additem', scrape);
+
+router.get('/', function(req, res) {
+      res.sendFile('index.html');
+});
+
+module.exports = router;
 /*
 var errors = require('./components/errors');
 
@@ -14,5 +19,3 @@ var errors = require('./components/errors');
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 */
-
-};

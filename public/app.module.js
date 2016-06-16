@@ -3,5 +3,6 @@
 // Define the `phonecatApp` module
 angular.module('itemApp', [
   'ngRoute',
-  'addItem'
+  'ngResource',
+  'addItem' 
 ]);
