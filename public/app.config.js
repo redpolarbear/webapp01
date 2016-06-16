@@ -4,15 +4,14 @@ angular.
   module('itemApp').
   config(['$locationProvider' ,'$routeProvider',
     function config($locationProvider, $routeProvider) {
-      $locationProvider.hashPrefix('!');
 
       $routeProvider.
-        when('/items', {
-          template: '<item-list></item-list>'
+        when('/additem', {
+          template: '<add-item></add-item>'
         }).
-        when('/items/:itemId', {
-          template: '<item-detail></item-detail>'
-        }).
-        otherwise('/items');
+        otherwise('/additem');
+      // $locationProvider.hashPrefix('!');
+      $locationProvider.html5Mode(true);
+      // .hashPrefix('!');
     }
   ]);

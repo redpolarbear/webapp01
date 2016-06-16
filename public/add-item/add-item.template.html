@@ -1,0 +1,35 @@
+<div class="">
+    <form ng-submit="$ctrl.getScrapePost()" style="margin-top:30px">
+        <h3>Please input the PRODUCT URL:</h3>
+        <!-- <div class="form-group">
+            <input type="text" class="form-control" placeholder="Title" ng-model="addItem.title">
+        </div> -->
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Product URL (e.g. http://shop.herschelsupply.ca/collections/backpacks/products/little-america-backpack-black-1)"
+                   ng-model="addItem.link">
+        </div>
+
+        <!-- <div class="spinner" ng-show="loading">
+            <img src="assets/images/spinner.gif">
+        </div> -->
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <!-- <div class="listing-details" ng-show="showScrapeDetails"> -->
+        <!-- <div class="form-group">
+                <div class="row listing-description-row">
+                    <label for="description" class="col-xs-12">Description</label>
+                </div>
+                <textarea class="form-control" rows="3" ng-model="addItem.description">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="listing-image">
+                    <img src="{{addItem.imgThumb}}" class="img-thumbnail img-responsive">
+                </div>
+            </div> -->
+        <!-- <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button> -->
+        <!-- </div> -->
+    </form>
+</div>

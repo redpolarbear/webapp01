@@ -7,7 +7,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
     morgan = require('morgan'),
-    routes = require('./routes'),
+    routes = require('./routes/index'),
+    api = require('./api/api.route'),
     // api = require('./routes/api'),
     http = require('http'),
     path = require('path'),
@@ -37,6 +38,9 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/api', api);
 
 var env = process.env.NODE_ENV || 'development';
 
