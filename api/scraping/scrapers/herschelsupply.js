@@ -50,7 +50,7 @@ exports.list = function(url, cb) {
                 // desc: $desc
             }
 
-            console.log(herschelsupply_item);
+            // console.log(herschelsupply_item);
             // respond with the final JSON object
             cb(herschelsupply_item);
         }

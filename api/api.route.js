@@ -12,5 +12,6 @@ var router = express.Router();
 // });
 
 router.post('/scrape', controller.scrape);
+router.post('/save', controller.itemSave);
 
 module.exports = router;

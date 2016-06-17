@@ -11,19 +11,22 @@ var ItemSchema = new Schema({
   weight: String,
   dimension: String,
   description: String,
-  detail-desc: [{
+  detail_descs: [{
     type: String
-  }]
+  }],
   imageURLs: [{
     type: String
   }],
   tags: [{
     type: String
   }],
+  imageLocalURLs:[{
+    type: String
+  }],
   createTime: {
     type: Date,
     'default': Date.now
-  },
+  }
 });
 
-module.exports = mongoose.model('Item', ItemSchema);
+module.exports = mongoose.model('scrapeItem', ItemSchema);
