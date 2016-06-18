@@ -4,5 +4,7 @@
 angular.module('itemApp', [
   'ngRoute',
   'ngResource',
-  'addItem' 
+  'scrapeItem',
+  'ngAnimate',
+  'ui.bootstrap'
 ]);

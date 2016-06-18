@@ -6,10 +6,10 @@ angular.
     function config($locationProvider, $routeProvider) {
 
       $routeProvider.
-        when('/additem', {
-          template: '<add-item></add-item>'
+        when('/scrapeitem', {
+          template: '<scrape-item></scrape-item>'
         }).
-        otherwise('/additem');
+        otherwise('/scrapeitem');
       // $locationProvider.hashPrefix('!');
       $locationProvider.html5Mode(true);
       // .hashPrefix('!');

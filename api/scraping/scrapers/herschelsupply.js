@@ -24,12 +24,12 @@ exports.list = function(url, cb) {
 
             var $detail_descs = [];
             $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > ul > li').each(function(i, elem) {
-              $detail_descs[i] = $(this).text();
+                $detail_descs[i] = $(this).text();
             });
 
             var $imageURLs = [];
             $('#product-thumbs > ul > li > img').each(function(i, elem) {
-              $imageURLs[i] = 'http:' + $(this).attr('src');
+                $imageURLs[i] = 'http:' + $(this).attr('src');
             })
 
             // var $img = 'http:' + $('img.product-image').attr('src');
@@ -47,7 +47,7 @@ exports.list = function(url, cb) {
                 description: $description,
                 detail_descs: $detail_descs,
                 imageURLs: $imageURLs
-                // desc: $desc
+                    // desc: $desc
             }
 
             // console.log(herschelsupply_item);

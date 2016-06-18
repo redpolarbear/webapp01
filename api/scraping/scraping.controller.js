@@ -8,60 +8,60 @@ var express = require('express');
 var path = require('path');
 var utils = require('../utils/utils.js');
 
- var scrapers = {};
+var scrapers = {};
 
 scrapers['herschelsupply'] = require('./scrapers/herschelsupply');
 
 exports.scrape = function(req, res) {
-  var url = req.body.url;
-  var scraperToUse;
+    var url = req.body.url;
+    var scraperToUse;
 
-  if (url.indexOf("herschelsupply") > -1) {
-    scraperToUse = 'herschelsupply';
-  } else {
-    console.log('cannot locate scraper');
-  }
+    if (url.indexOf("herschelsupply") > -1) {
+        scraperToUse = 'herschelsupply';
+    } else {
+        console.log('cannot locate scraper');
+    }
 
-  scrapers[scraperToUse].list(url, function(data) {
-    // console.log('data from scraper: ', data);
-    res.json(data);
-  });
+    scrapers[scraperToUse].list(url, function(data) {
+        // console.log('data from scraper: ', data);
+        res.json(data);
+    });
 };
 
 exports.itemSave = function(req, res) {
-  var newScrapeItem = new scrapeItem();
-  newScrapeItem.url = req.body.url;
-  newScrapeItem.color = req.body.color;
-  newScrapeItem.title = req.body.title;
-  newScrapeItem.price = req.body.price;
-  newScrapeItem.dimension = req.body.dimension;
-  newScrapeItem.description = req.body.description;
-  newScrapeItem.detail_descs = req.body.detail_descs;
+    var newScrapeItem = new scrapeItem();
+    newScrapeItem.url = req.body.url;
+    newScrapeItem.color = req.body.color;
+    newScrapeItem.title = req.body.title;
+    newScrapeItem.price = req.body.price;
+    newScrapeItem.dimension = req.body.dimension;
+    newScrapeItem.description = req.body.description;
+    newScrapeItem.detail_descs = req.body.detail_descs;
 
-  newScrapeItem.imageURLs = req.body.imageURLs;
+    newScrapeItem.imageURLs = req.body.imageURLs;
 
-  var imgs = req.body.imageURLs;
-  var imgs_local_names = [];
+    var imgs = req.body.imageURLs;
+    var imgs_local_names = [];
 
-  imgs.forEach(function (item, index) {
-    var random = utils.randomizer(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-    var filename = 'images/item_imgs/' + random + '.png'
-    newScrapeItem.imageLocalURLs[index] = filename;
-    utils.downloadURI(imgs[index], 'public/' + filename, function(filename) {
-      console.log('done');
+    imgs.forEach(function(item, index) {
+        var random = utils.randomizer(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        var filename = 'images/item_imgs/' + random + '.png'
+        newScrapeItem.imageLocalURLs[index] = filename;
+        utils.downloadURI(imgs[index], 'public/' + filename, function(filename) {
+            console.log('done');
+        });
     });
-  });
 
-  // newScrapeItem.imageLocalURLs = imgs_local_names;
+    // newScrapeItem.imageLocalURLs = imgs_local_names;
 
-  newScrapeItem.save(function(err,newItem) {
-    if(err) {
-      res.send('error saving the new item.');
-    } else {
-      console.log(newItem);
-      res.send(newItem);
-    };
+    newScrapeItem.save(function(err, newItem) {
+        if (err) {
+            res.send('error saving the new item.');
+        } else {
+            console.log(newItem);
+            res.send(newItem);
+        };
 
 
-  });
+    });
 };
