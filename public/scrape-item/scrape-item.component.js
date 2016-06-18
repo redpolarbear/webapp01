@@ -37,19 +37,19 @@ component('scrapeItem', {
                 });
         };
 
-        $scope.open = function(size) {
-
+        $scope.openUploadImgs = function() {
             var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'myModalContent.html',
+                animation: true,
+                templateUrl: 'weidian-uploadimgs-modalcontent.html',
                 controller: 'ModalInstanceCtrl',
-                size: size,
+                size: lg,
                 resolve: {
-                    items: function() {
-                        return $scope.items;
+                    upload_imgs: function() {
+                        return $scope.item.imageURLs;
                     }
                 }
             });
         };
+        
     }]
 });
