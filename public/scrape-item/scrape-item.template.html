@@ -1,5 +1,5 @@
 <div>
-    <form ng-submit="$ctrl.getScrapePost()" style="margin-top:30px">
+    <form ng-submit="getScrapePost()" style="margin-top:30px">
         <h3>Please input the PRODUCT URL:</h3>
         <!-- <div class="form-group">
             <input type="text" class="form-control" placeholder="Title" ng-model="addItem.title">
@@ -47,9 +47,9 @@
     </ul>
 
 <div>
-    <button class="btn btn-primary" ng-click="$ctrl.saveScrapeItem()">1. Save the item</button>
-    <button class="btn btn-primary" ng-click="$ctrl.open('lg')">2. Upload the pics to Weidian</button>
-    <button class="btn btn-primary">3. Upload the item to Weidian</button>
+    <button class="btn btn-primary" ng-click="saveScrapeItem()">Step 1. Save the item</button>
+    <button class="btn btn-primary" ng-click="open()">Step 2. Upload the pics to Weidian</button>
+    <button class="btn btn-primary">Step 3. Upload the item to Weidian</button>
 </div>
 
     <ul class="specs">

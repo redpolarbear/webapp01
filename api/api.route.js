@@ -1,8 +1,8 @@
 'use strict';
 
 // var controller = require('./look.controller');
-var scraping_controller = require('./scraping/scraping.controller');
-var weidian_controller = require('./weidian/weidian.controller');
+var scrapingController = require('./scraping/scraping.controller');
+var weidianController = require('./weidian/weidian.controller');
 
 var express = require('express');
 
@@ -13,9 +13,9 @@ var router = express.Router();
 //   res.send('scrape ' + url);
 // });
 
-router.post('/scrape', scraping_controller.scrape);
-router.post('/save', scraping_controller.itemSave);
-router.post('/weidian/uploadimgs', weidian_controller.uploadimgs);
-router.post('/weidian/add', weidian_controller.addItem);
+router.post('/scrape', scrapingController.scrape);
+router.post('/save', scrapingController.itemSave);
+// router.post('/weidian/uploadimgs', weidian_controller.uploadimgs);
+// router.post('/weidian/add', weidian_controller.addItem);
 
 module.exports = router;

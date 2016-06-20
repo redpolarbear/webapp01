@@ -5,6 +5,7 @@ component('scrapeItem', {
     templateUrl: 'scrape-item/scrape-item.template.html',
     controller: ['$scope', 'scrapeAPI', 'saveItemAPI', '$uibModal', function AddItemController($scope, scrapeAPI, saveItemAPI, $uibModal) {
         $scope.showScrapeDetails = false;
+        var imgs_local_names = [];
         $scope.getScrapePost = function getScrapePost() {
             // $scope.loading = true;
             //get the url link from the addItem.link (ng-model)
@@ -33,20 +34,20 @@ component('scrapeItem', {
         $scope.saveScrapeItem = function saveScrapeItem() {
             saveItemAPI.saveScrapeDetails($scope.item)
                 .then(function(result) {
+                    imgs_local_names = result.data.imageLocalURLs;
+                    console.log(imgs_local_names);
                     console.log(result);
                 });
         };
 
         $scope.open = function(size) {
-
             var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'myModalContent.html',
-                controller: 'ModalInstanceCtrl',
-                size: size,
+                animation: true,
+                templateUrl: 'scrape-item/weidian-uploadimgs-modal.html',
+                controller: 'weidian-uploadimgs.controller',
                 resolve: {
-                    items: function() {
-                        return $scope.items;
+                    uploadImgLocalUrls: function() {
+                        return imgs_local_names;
                     }
                 }
             });

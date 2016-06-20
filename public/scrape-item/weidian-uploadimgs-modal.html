@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title">Upload Images to Weidian</h3>
+</div>
+<div class="modal-body">
+    <ul class="item-thumbs">
+        <li ng-repeat="img in imageLocalURLs">
+            <img ng-src="{{img}}"/>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="">Upload</button>
+    <button class="btn" ng-click="$close()">Cancel</button>
+</div>
