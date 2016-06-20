@@ -6,6 +6,9 @@ var express = require('express');
 var router = express.Router();
 
 // app.use('/api/additem', scrape);
+router.get('/scrapeitem', function(req, res) {
+      res.sendFile('index.html');
+});
 
 router.get('/', function(req, res) {
       res.sendFile('index.html');

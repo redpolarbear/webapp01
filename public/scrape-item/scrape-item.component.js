@@ -44,7 +44,7 @@ component('scrapeItem', {
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'scrape-item/weidian-uploadimgs-modal.html',
-                controller: 'weidian-uploadimgs.controller',
+                controller: 'weidianUploadImgsCtrl',
                 resolve: {
                     uploadImgLocalUrls: function() {
                         return imgs_local_names;

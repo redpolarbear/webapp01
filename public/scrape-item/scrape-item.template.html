@@ -33,6 +33,14 @@
     </form>
 </div>
 
+<div>
+  <form action="http://api.vdian.com/media/upload" enctype="multipart/form-data" method="post">
+      <input type="file" id="media" name="media">
+      <input type="hidden" name="access_token" id="access_token" value="55df06abb80d287ec365555793b7c277000502344c">
+      <button>submit</button>
+  </form>
+</div>
+
 <div ng-show="showScrapeDetails">
     <img ng-src="{{mainImageUrl}}" class="item" />
 
@@ -46,11 +54,11 @@
         </li>
     </ul>
 
-<div>
-    <button class="btn btn-primary" ng-click="saveScrapeItem()">Step 1. Save the item</button>
-    <button class="btn btn-primary" ng-click="open()">Step 2. Upload the pics to Weidian</button>
-    <button class="btn btn-primary">Step 3. Upload the item to Weidian</button>
-</div>
+    <div>
+        <button class="btn btn-primary" ng-click="saveScrapeItem()">Step 1. Save the item</button>
+        <button class="btn btn-primary" ng-click="open()">Step 2. Upload the pics to Weidian</button>
+        <button class="btn btn-primary">Step 3. Upload the item to Weidian</button>
+    </div>
 
     <ul class="specs">
         <li>
@@ -66,15 +74,15 @@
             </dl>
         </li>
         <li>
-          <dl>
-            <dt>Detail Description</dt>
-            <dd ng-repeat="detail_desc in item.detail_descs">{{detail_desc}}</dd>
-          </dl>
+            <dl>
+                <dt>Detail Description</dt>
+                <dd ng-repeat="detail_desc in item.detail_descs">{{detail_desc}}</dd>
+            </dl>
         </li>
         <li>
             <dl>
-              <dt>Dimension</dt>
-              <dd>{{item.dimension}}</dd>
+                <dt>Dimension</dt>
+                <dd>{{item.dimension}}</dd>
             </dl>
         </li>
     </ul>

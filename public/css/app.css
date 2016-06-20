@@ -40,11 +40,19 @@ h1 {
     margin: 0;
 }
 .item-thumbs img {
-    height: 100px;
+    height: 150px;
     padding: 1em;
-    width: 100px;
+    width: 150px;
 }
 .item-thumbs li {
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 1em;
+}
+.item-thumbs td img {
+    margin-left: 10px;
     background-color: white;
     border: 1px solid black;
     cursor: pointer;
