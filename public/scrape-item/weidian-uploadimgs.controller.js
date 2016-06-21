@@ -3,20 +3,21 @@ angular.module('scrapeItem')
 
 weidianUploadImgsCtrl.$inject = ['$scope', 'uploadImgAPI', '$uibModalInstance', 'uploadImgLocalUrls'];
 
-var weidianUploadImgsCtrl = function ($scope, uploadImgAPI, $uibModalInstance, uploadImgLocalUrls) {
+function weidianUploadImgsCtrl($scope, uploadImgAPI, $uibModalInstance, uploadImgLocalUrls) {
 
     $scope.imageLocalURLs = uploadImgLocalUrls;
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(img) {
-      var imgLocation = img;
+      var imgLocation = {
+        imgFile: img
+      };
 
-    uploadImgAPI.uploadImgPost(imgLocation)
-      .then(function(retunUrl) {
+      uploadImgAPI.uploadImgPost(imgLocation)
+        .then(function(returnUrl) {
+          console.log(returnUrl.result);
+        })
 
-      })
-
-      console.log(img);
-
+      // console.log(img);
     };
   //
   //
@@ -28,4 +29,4 @@ var weidianUploadImgsCtrl = function ($scope, uploadImgAPI, $uibModalInstance, u
   // $scope.cancel = function () {
   //   $uibModalInstance.dismiss('cancel');
   // };
-});
+};

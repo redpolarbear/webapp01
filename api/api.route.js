@@ -15,7 +15,7 @@ var router = express.Router();
 
 router.post('/scrape', scrapingController.scrape);
 router.post('/save', scrapingController.itemSave);
-// router.post('/weidian/uploadimg', weidianController.uploadImg);
+router.post('/uploadimg', weidianController.uploadImg);
 // router.post('/weidian/add', weidian_controller.addItem);
 
 module.exports = router;

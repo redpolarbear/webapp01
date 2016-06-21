@@ -11,7 +11,7 @@ component('scrapeItem', {
             //get the url link from the addItem.link (ng-model)
             var link = {
                 url: $scope.addItem.link
-            }
+            };
             if (link.url == "") {
                 console.log('please input the link!!!');
             } else {
