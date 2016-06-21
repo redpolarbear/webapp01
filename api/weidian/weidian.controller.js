@@ -29,3 +29,12 @@ exports.uploadImg = function(req, res) {
     });
 
 };
+
+exports.getToken = function(req, res) {
+  var weidianAPI_url =
+  var secret =
+  var key =
+
+  request.post(weidianAPI_url, {})
+
+};
