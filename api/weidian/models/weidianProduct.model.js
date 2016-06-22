@@ -21,10 +21,14 @@ var weidianProductSchema = new Schema({
   }],
   cate_id: String, //true catagory, use "," to separate
   itemName: String, //true description
+  scrapeItem_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'scrapeItem'
+  },
   createTime: {
     type: Date,
     'default': Date.now
   }
 });
 
-module.exports = mongoose.model('Token', TokenSchema);
+module.exports = mongoose.model('weidianProduct', weidianProductSchema);

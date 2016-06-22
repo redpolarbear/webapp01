@@ -38,3 +38,11 @@ exports.getToken = function(req, res) {
   request.post(weidianAPI_url, {})
 
 };
+
+exports.saveToken = function(req, res) {
+
+};
+
+exports.validateToken = function(req, res) {
+
+};

@@ -3,6 +3,7 @@
 // var controller = require('./look.controller');
 var scrapingController = require('./scraping/scraping.controller');
 var weidianController = require('./weidian/weidian.controller');
+var weidianTokenController = require('./weidian/weidian.token.controller');
 
 var express = require('express');
 
@@ -18,6 +19,6 @@ router.post('/save', scrapingController.itemSave);
 router.post('/uploadimg', weidianController.uploadImg);
 // router.post('/weidian/add', weidian_controller.addItem);
 
-route.get('/token', weidianController.getToken);
+route.get('/renewtoken', weidianTokenController.renewToken);
 
 module.exports = router;
