@@ -8,9 +8,9 @@ weidianTokenAPI.$inject = ['$http'];
 
 function weidianTokenAPI($http) {
   return {
-      weidianToken: weidianToken
+      weidianGetToken: weidianGetToken
   }
   function weidianToken() {
-        return $http.post('/api/token', );
+        return $http.post('/api/gettoken', );
     }
 };

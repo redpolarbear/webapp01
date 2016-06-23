@@ -40,11 +40,11 @@ component('scrapeItem', {
                 });
         };
 
-        $scope.open = function(size) {
+        $scope.openWeidianUpload = function() {
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: 'scrape-item/weidian-uploadimgs-modal.html',
-                controller: 'weidianUploadImgsCtrl',
+                templateUrl: 'scrape-item/weidian-upload-modal.html',
+                controller: 'weidianUploadCtrl',
                 resolve: {
                     uploadImgLocalUrls: function() {
                         return imgs_local_names;

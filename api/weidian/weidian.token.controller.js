@@ -20,16 +20,19 @@ exports.getToken = function(req, res) {
             };
             if (!newToken || !validateToken(newToken)) {
                 console.log('no token existing, renewToken now')
-                newToken = renewToken();
+                renewToken(function(newToken){
+                  console.log('callback function:' + newToken);
+                  saveToken(newToken);
+                  res.json(newToken);
+                });
                 // newToken = JSON.parse(newToken);
-                saveToken(newToken);
-                res.json(newToken);
+
                 // requestToken();
                 // return res.send(newToken);
                 // return res.json(requestToken());
             } else {
                 console.log('the existing token is valid.')
-                saveToken(newToken);
+                // saveToken(newToken);
                 res.json(newToken);
             };
 
@@ -54,15 +57,15 @@ function validateToken(TokenObj) {
     }
 };
 
-function renewToken() {
+function renewToken(callback) {
     var weidianAPI_url = 'https://api.vdian.com/token?grant_type=client_credential&';
     //https://api.vdian.com/token?grant_type=client_credential&appkey=xxx&secret=xxx
     weidianAPI_url = weidianAPI_url + 'appkey=' + appkey + '&secret=' + secret;
 
-    return request.get(weidianAPI_url, function(err, response, body) {
+    request.get(weidianAPI_url, function(err, response, body) {
         if (!err && response.statusCode == 200) {
             console.log(body);
-            return body;
+            callback(body);
             // saveToken(res.json(body));
             // return: {
             //     "result": {
@@ -91,6 +94,7 @@ function saveToken(return_token) {
             console.log(err);
         } else {
             console.log(newToken);
+            // callback(newToken);
             // return newToken;
         }
     });
