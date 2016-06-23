@@ -16,6 +16,7 @@ exports.list = function(url, cb) {
 
             var $linkurl = url;
             var $title = $('h2[itemprop="name"]').html();
+            var $partnumber = $('.sku').html();
             var $color = $('.product-color').html();
             var $price = $('span.product-price').html();
             // var weight =
@@ -41,6 +42,7 @@ exports.list = function(url, cb) {
                 // imageURLs: $img,
                 url: $linkurl,
                 title: $title,
+                partnumber: $partnumber,
                 color: $color,
                 price: $price,
                 dimension: $dimension,

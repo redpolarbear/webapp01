@@ -31,6 +31,7 @@ exports.scrape = function(req, res) {
 exports.itemSave = function(req, res) {
     var newScrapeItem = new scrapeItem();
     newScrapeItem.url = req.body.url;
+    newScrapeItem.partnumber = req.body.partnumber;
     newScrapeItem.color = req.body.color;
     newScrapeItem.title = req.body.title;
     newScrapeItem.price = req.body.price;

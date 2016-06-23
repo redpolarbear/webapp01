@@ -2,15 +2,15 @@
 
 angular
     .module('itemApp')
-    .factory('uploadImgAPI', uploadImgAPI);
+    .factory('uploadImageAPI', uploadImageAPI);
 
-saveItemAPI.$inject = ['$http'];
+uploadImageAPI.$inject = ['$http'];
 
-function uploadImgAPI($http) {
+function uploadImage($http) {
   return {
-      uploadImgPost: uploadImgPost
+      uploadImage: uploadImage
   }
-  function uploadImgPost(img) {
-        return $http.post('/api/uploadimg', img);
+  function uploadProduct(productDetail) {
+        return $http.post('/api/uploadproduct', productDetail);
     }
 };

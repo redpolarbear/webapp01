@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var weidianProductSchema = new Schema({
+  item_id: String //true item_id return when it's successfully created.
   price: String,  //true
   stock: String,  //true
   free_delivery: String, //true 0=excl. express, 1=incl. express

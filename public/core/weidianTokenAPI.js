@@ -10,7 +10,7 @@ function weidianTokenAPI($http) {
   return {
       weidianGetToken: weidianGetToken
   }
-  function weidianToken() {
-        return $http.post('/api/gettoken', );
+  function weidianGetToken() {
+        return $http.get('/api/gettoken');
     }
 };
