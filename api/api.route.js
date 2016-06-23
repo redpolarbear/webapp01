@@ -19,6 +19,7 @@ router.post('/save', scrapingController.itemSave);
 router.post('/uploadimg', weidianController.uploadImg);
 // router.post('/weidian/add', weidian_controller.addItem);
 
-router.get('/renewtoken', weidianTokenController.renewToken);
+// router.get('/renewtoken', weidianTokenController.renewToken);
+router.get('/gettoken', weidianTokenController.getToken);
 
 module.exports = router;

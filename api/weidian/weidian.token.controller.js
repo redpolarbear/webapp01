@@ -2,21 +2,67 @@
 
 var request = require('request');
 var TokenItem = require('./models/weidianToken.model');
+// var express = require('express');
+// var app = express();
 
 var appkey = '659335';
 var secret = '57371ee83d9f8b64f8a497af09ce1ffb';
 
-exports.renewToken = function(req, res) {
+exports.getToken = function(req, res) {
+    // var Token = {};
+    TokenItem.findOne({})
+        .sort({
+            createTime: -1
+        })
+        .exec(function(err, newToken) {
+            if (err) {
+                console.log(err);
+            };
+            if (!newToken || !validateToken(newToken)) {
+                console.log('no token existing, renewToken now')
+                newToken = renewToken();
+                // newToken = JSON.parse(newToken);
+                saveToken(newToken);
+                res.json(newToken);
+                // requestToken();
+                // return res.send(newToken);
+                // return res.json(requestToken());
+            } else {
+                console.log('the existing token is valid.')
+                saveToken(newToken);
+                res.json(newToken);
+            };
+
+        });
+
+};
+
+function validateToken(TokenObj) {
+    // var TokenObj = JSON.parse(TokenString);
+    var createTime = Date.parse(TokenObj.createTime);
+    var expire_in = parseInt(TokenObj.expire_in);
+
+    var todayTime = new Date();
+    todayTime = todayTime.toISOString();
+    todayTime = Date.parse(todayTime);
+    // var todayTime = Date.parse("2016-06-26T06:28:43.398Z");
+
+    if (todayTime / 1000 - createTime / 1000 - expire_in < 0) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+function renewToken() {
     var weidianAPI_url = 'https://api.vdian.com/token?grant_type=client_credential&';
     //https://api.vdian.com/token?grant_type=client_credential&appkey=xxx&secret=xxx
     weidianAPI_url = weidianAPI_url + 'appkey=' + appkey + '&secret=' + secret;
 
-    request.get(weidianAPI_url, function(err, response, body) {
+    return request.get(weidianAPI_url, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-            // console.log(body);
-            saveToken(body);
-            res.json(body);
-
+            console.log(body);
+            return body;
             // saveToken(res.json(body));
             // return: {
             //     "result": {
@@ -32,7 +78,8 @@ exports.renewToken = function(req, res) {
     });
 };
 
-var saveToken = function(return_token) {
+
+function saveToken(return_token) {
     var tokenObj = JSON.parse(return_token);
     var newTokenItem = new TokenItem();
     // var token
@@ -40,27 +87,25 @@ var saveToken = function(return_token) {
     newTokenItem.expire_in = tokenObj.result.expire_in;
 
     newTokenItem.save(function(err, newToken) {
-      if(err) {
-        console.log(err);
-      } else {
-        console.log(newToken);
-        // return newToken;
-      }
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(newToken);
+            // return newToken;
+        }
     });
 };
 
-var getToken = function() {
-   TokenItem.findOne({})
-     .sort ({
-       createTime: -1
-     })
-     .exec(function(err, newToken){
-       var
-     });
 
-
-};
-
-exports.validateToken = function(req, res) {
-
-};
+// var requestToken = function() {
+//     request.get('http://192.168.33.10:9000/api/renewtoken', function(err, response, body) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             //  return JSON.parse(body);
+//             console.log('request for the new Token: ' + body);
+//             // return body;
+//             // Token = JSON.parse(body);
+//         }
+//     });
+// };
