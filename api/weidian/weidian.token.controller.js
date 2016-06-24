@@ -8,7 +8,7 @@ var TokenItem = require('./models/weidianToken.model');
 var appkey = '659335';
 var secret = '57371ee83d9f8b64f8a497af09ce1ffb';
 
-exports.getToken = function(req, res) {
+exports.getToken = function(callback) {
     // var Token = {};
     TokenItem.findOne({})
         .sort({
@@ -21,9 +21,10 @@ exports.getToken = function(req, res) {
             if (!newToken || !validateToken(newToken)) {
                 console.log('no token existing, renewToken now')
                 renewToken(function(newToken){
-                  console.log('callback function:' + newToken);
-                  saveToken(newToken);
-                  res.json(newToken);
+                  console.log('callback function: \n' + newToken);
+                  saveToken(newToken)
+                  callback(newToken);
+                  // res.json(newToken);
                 });
                 // newToken = JSON.parse(newToken);
 
@@ -31,9 +32,11 @@ exports.getToken = function(req, res) {
                 // return res.send(newToken);
                 // return res.json(requestToken());
             } else {
-                console.log('the existing token is valid.')
+                console.log('the existing token is valid.');
+                console.log(newToken.result.access_token);
+                callback(newToken);
                 // saveToken(newToken);
-                res.json(newToken);
+                // res.json(newToken);
             };
 
         });
@@ -43,7 +46,7 @@ exports.getToken = function(req, res) {
 function validateToken(TokenObj) {
     // var TokenObj = JSON.parse(TokenString);
     var createTime = Date.parse(TokenObj.createTime);
-    var expire_in = parseInt(TokenObj.expire_in);
+    var expire_in = parseInt(TokenObj.result.expire_in);
 
     var todayTime = new Date();
     todayTime = todayTime.toISOString();
@@ -86,14 +89,15 @@ function saveToken(return_token) {
     var tokenObj = JSON.parse(return_token);
     var newTokenItem = new TokenItem();
     // var token
-    newTokenItem.access_token = tokenObj.result.access_token;
-    newTokenItem.expire_in = tokenObj.result.expire_in;
+    newTokenItem.result.access_token = tokenObj.result.access_token;
+    newTokenItem.result.expire_in = tokenObj.result.expire_in;
 
     newTokenItem.save(function(err, newToken) {
         if (err) {
             console.log(err);
         } else {
-            console.log(newToken);
+            console.log('Token saved successfully: \n' + newToken);
+            console.log(newToken.result.access_token);
             // callback(newToken);
             // return newToken;
         }

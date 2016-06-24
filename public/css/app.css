@@ -51,13 +51,17 @@ h1 {
     display: inline-block;
     margin: 1em;
 }
-.item-thumbs td img {
-    margin-left: 10px;
+.item-thumbs-modal li {
     background-color: white;
     border: 1px solid black;
     cursor: pointer;
     display: inline-block;
     margin: 1em;
+}
+.item-thumbs-modal img {
+    height: 100px;
+    padding: 0.7em;
+    width: 100px;
 }
 .specs {
     clear: both;

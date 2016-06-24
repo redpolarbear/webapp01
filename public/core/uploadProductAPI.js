@@ -16,7 +16,7 @@ function uploadProductAPI($http) {
     return $http.post('/api/uploadproduct', productDetail);
   };
 
-  function uploadImage(imageDetail) {
-    return $http.post('/api/uploadimage', imageDetail);
+  function uploadImage(imgFile) {
+    return $http.post('/api/uploadimage', imgFile);
   };
 };

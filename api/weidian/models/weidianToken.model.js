@@ -4,8 +4,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var weidianTokenSchema = new Schema({
-  access_token: String,
-  expire_in: Number,
+  result: {
+    access_token: String,
+    expire_in: String
+  },
   createTime: {
     type: Date,
     'default': Date.now

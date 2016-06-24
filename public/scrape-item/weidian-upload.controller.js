@@ -22,7 +22,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         format: "json"
     }
 
-    var imgs = savedScrapeItem.imageLocalURLs;
+    $scope.imgs = savedScrapeItem.imageLocalURLs;
+    // $scope.imgs = savedScrapeItem.imageURLs;
 
     var isDefined = function(string) {
         if (string) {
@@ -49,17 +50,21 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
     //  = $scope.remote_free_delivery
     // $scope.imageLocalURLs = savedScrapeItem.;
 
-    $scope.uploadImgtoWeidian = function uploadImgtoWeidian(img) {
-        var imgLocation = {
-            imgFile: img
-        };
-
-        uploadProductAPI.uploadImage(imgLocation)
-            .then(function(imgURL) {
-                console.log(imgURL.result);
-            });
-
-        // console.log(img);
+    $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
+        var weidianImageURLs = [];
+        imgs.forEach(function(element, index) {
+                var imgFile = {
+                    img: element
+                };
+                uploadProductAPI.uploadImage(imgFile)
+                    .then(function(imgURL) {
+                        // var dataObj = JSON.parse(imgURL);
+                        console.log(imgURL.result);
+                        weidianImageURLs.push(imgURL.result);
+                        console.log(weidianImageURLs[index]);
+                    });
+                $scope.showWeidianImageURLs = true;
+            }) // console.log(img);
     };
     //
     //
