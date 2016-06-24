@@ -15,15 +15,7 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         remote_free_delivery: ""
     };
 
-    var public_params = {
-        method: "vdian.item.add",
-        access_token: "",
-        version: "1.1",
-        format: "json"
-    }
-
     $scope.imgs = savedScrapeItem.imageLocalURLs;
-    // $scope.imgs = savedScrapeItem.imageURLs;
 
     var isDefined = function(string) {
         if (string) {
@@ -43,37 +35,51 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
     $scope.itemName = productDetail.itemName;
     $scope.stock = "5"; //by default
-    $scope.price = savedScrapeItem.price;
+    var cny_price = parseInt(savedScrapeItem.price)*1.12*5.2*1.20;
+    $scope.est_price = savedScrapeItem.price + ' * 1.12 * 5.2 * 1.20 = ' + cny_price;
+    $scope.price = cny_price;
     // $scope.cate =
 
     //  = $scope.free_delivery
     //  = $scope.remote_free_delivery
-    // $scope.imageLocalURLs = savedScrapeItem.;
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
-        var weidianImageURLs = [];
         imgs.forEach(function(element, index) {
                 var imgFile = {
                     img: element
                 };
                 uploadProductAPI.uploadImage(imgFile)
                     .then(function(imgURL) {
-                        // var dataObj = JSON.parse(imgURL);
-                        console.log(imgURL.result);
-                        weidianImageURLs.push(imgURL.result);
-                        console.log(weidianImageURLs[index]);
+                        var dataObj = JSON.parse(imgURL.data);
+                        // console.log(dataObj.result);
+                        // console.log(imgURL);
+                        productDetail.bigImgs.push(dataObj.result);
+                        // console.log(productDetail.bigImgs);
+                        $scope.weidianImageURLs = productDetail.bigImgs;
                     });
-                $scope.showWeidianImageURLs = true;
-            }) // console.log(img);
+            });
     };
-    //
-    //
-    //
-    // $scope.ok = function () {
-    //   $uibModalInstance.close($scope.selected.item);
-    // };
-    //
-    // $scope.cancel = function () {
-    //   $uibModalInstance.dismiss('cancel');
-    // };
+
+    $scope.uploadProducttoWeidian = function uploadProducttoWeidian() {
+      productDetail.itemName = $scope.itemName;
+      productDetail.price = $scope.price;
+      productDetail.stock = $scope.stock;
+
+      for (i = 0; i < productDetail.bigImgs.length; i++) {
+        productDetail.titles.push('Product Image ' + (i+1));
+        console.log(productDetail.titles);
+      };
+
+      productDetail.cate_id = '83115821';
+
+      productDetail.free_delivery = $scope.free_delivery;
+      productDetail.remote_free_delivery = $scope.remote_free_delivery;
+
+      uploadProductAPI.uploadProduct(productDetail)
+       .then(function(result) {
+         console.log(result);
+       });
+
+
+    };
 };

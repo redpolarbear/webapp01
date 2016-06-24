@@ -80,7 +80,7 @@ function renewToken(callback) {
             //         "status_reason": "success"
             //     }
             // }
-        }
+        };
     });
 };
 

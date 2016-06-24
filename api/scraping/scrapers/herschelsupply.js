@@ -18,7 +18,7 @@ exports.list = function(url, cb) {
             var $title = $('h2[itemprop="name"]').html();
             var $partnumber = $('.sku').html();
             var $color = $('.product-color').html();
-            var $price = $('span.product-price').html();
+            var $price = $('span.product-price').html().slice(1);
             // var weight =
             var $dimension = $('p.dimension').html();
             var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').html();

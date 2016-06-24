@@ -34,7 +34,8 @@ component('scrapeItem', {
         $scope.saveScrapeItem = function saveScrapeItem() {
             saveItemAPI.saveScrapeDetails($scope.item)
                 .then(function(result) {
-                    savedScrapeItem = result.data;                    
+                    console.log(result);
+                    savedScrapeItem = result.data;
                 });
         };
 

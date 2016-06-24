@@ -17,6 +17,7 @@ var router = express.Router();
 router.post('/scrape', scrapingController.scrape);
 router.post('/save', scrapingController.itemSave);
 router.post('/uploadimage', weidianController.uploadImage);
+router.post('/uploadproduct', weidianController.uploadProduct);
 // router.post('/weidian/add', weidian_controller.addItem);
 
 // router.get('/renewtoken', weidianTokenController.renewToken);
