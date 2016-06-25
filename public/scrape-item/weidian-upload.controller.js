@@ -25,23 +25,28 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         };
     };
 
-    productDetail.itemName = isDefined(savedScrapeItem.title) + "\n" +
+    var customized_comment = "备注：根据中国海关规定，境外发往中国的包裹，必须提交收货人身份证信息清关。\n为了能尽快发出包裹，请您在下单之后关注微信订阅号（亚瑟的Funky俱乐部），并联系上传收件人的身份证正反面，我们将保证您的个人信息安全。"
+
+    productDetail.itemName = "【加拿大直邮含税】 " + isDefined(savedScrapeItem.title) + "\n" +
         "\n" + isDefined(savedScrapeItem.partnumber) + "\n" +
         "\n" + isDefined(savedScrapeItem.color) + "\n" +
         "\n" + isDefined(savedScrapeItem.dimension) + "\n" +
         "\n" + isDefined(savedScrapeItem.weight) + "\n" +
         "\n" + isDefined(savedScrapeItem.description) + "\n" +
-        "- " + savedScrapeItem.detail_descs.join("\n- ");
+        "- " + savedScrapeItem.detail_descs.join("\n- ") +
+        "\n\n" + customized_comment;
 
+    productDetail.itemName = productDetail.itemName.replace(/"/g,"'"); // change the double quote to single
     $scope.itemName = productDetail.itemName;
     $scope.stock = "5"; //by default
-    var cny_price = parseInt(savedScrapeItem.price)*1.12*5.2*1.20;
+    var cny_price = Math.round(parseInt(savedScrapeItem.price)*1.12*5.2*1.20);
     $scope.est_price = savedScrapeItem.price + ' * 1.12 * 5.2 * 1.20 = ' + cny_price;
     $scope.price = cny_price;
+    $scope.cate_id = "83115821";
     // $scope.cate =
 
-    //  = $scope.free_delivery
-    //  = $scope.remote_free_delivery
+    $scope.free_delivery = "1";
+    $scope.remote_free_delivery = "0";
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
         imgs.forEach(function(element, index) {
@@ -70,7 +75,7 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         console.log(productDetail.titles);
       };
 
-      productDetail.cate_id = '83115821';
+      productDetail.cate_id = $scope.cate_id;
 
       productDetail.free_delivery = $scope.free_delivery;
       productDetail.remote_free_delivery = $scope.remote_free_delivery;

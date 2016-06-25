@@ -42,13 +42,17 @@ exports.uploadProduct = function(req, res) {
         };
 
         var access_token = newToken.result.access_token;
-
         var public_params = {
             method: "vdian.item.add",
             access_token: access_token,
             version: "1.1",
             format: "json"
         };
+
+        console.log(JSON.stringify(param));
+        console.log(JSON.stringify(public_params));
+
+
         request.post({
             url: weidianAPI_url,
             form: {

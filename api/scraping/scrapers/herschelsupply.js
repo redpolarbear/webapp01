@@ -41,7 +41,7 @@ exports.list = function(url, cb) {
             var herschelsupply_item = {
                 // imageURLs: $img,
                 url: $linkurl,
-                title: $title,
+                title: 'HERSCHEL SUPPLY - ' + $title,
                 partnumber: $partnumber,
                 color: $color,
                 price: $price,
