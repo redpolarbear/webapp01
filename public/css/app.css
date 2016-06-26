@@ -22,8 +22,13 @@ h1 {
     padding-bottom: 1em;
     width: 100px;
 }
-
-
+.mybtn {
+  text-align: center;
+}
+.mybtn button {
+  margin-left: 1.2em;
+  margin-right: 1.2em;
+}
 .item {
     background-color: white;
     border: 1px solid black;

@@ -40,9 +40,9 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
     $scope.itemName = productDetail.itemName;
     $scope.stock = "5"; //by default
     var cny_price = Math.round(parseInt(savedScrapeItem.price)*1.12*5.2*1.20);
-    $scope.est_price = savedScrapeItem.price + ' * 1.12 * 5.2 * 1.20 = ' + cny_price;
+    $scope.est_price = savedScrapeItem.price + ' x 1.12 x 5.2 x 1.20 = ' + cny_price;
     $scope.price = cny_price;
-    $scope.cate_id = "83115821";
+    $scope.cate_id = "83115821"; // category for hs
     // $scope.cate =
 
     $scope.free_delivery = "1";

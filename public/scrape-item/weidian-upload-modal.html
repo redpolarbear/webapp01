@@ -4,8 +4,12 @@
 <form role="form">
     <div class="modal-body">
         <div class="form-group">
+            <label for="item_id">商品ID: </label>
+            <input type="text" class="form-control" id="item_id" ng-model="item_id">
+        </div>
+        <div class="form-group">
             <label for="itemName">商品描述: </label>
-            <textarea class="form-control" rows="7" id="itemName" ng-model="itemName"></textarea>
+            <textarea class="form-control" rows="15" id="itemName" ng-model="itemName"></textarea>
         </div>
         <div class="form-group">
             <label for="stock">库存量: </label>
