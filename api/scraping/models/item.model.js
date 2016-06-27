@@ -7,7 +7,9 @@ var ItemSchema = new Schema({
   url: String,
   title: String,
   partnumber: String,
-  color: String,
+  colors: [{
+    type: String
+  }],
   price: String,
   weight: String,
   dimension: String,

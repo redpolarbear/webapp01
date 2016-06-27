@@ -17,7 +17,8 @@ exports.list = function(url, cb) {
             var $linkurl = url;
             var $title = $('h2[itemprop="name"]').text();
             var $partnumber = $('.sku').text();
-            var $color = $('.product-color').text();
+            var $colors =[];
+            $colors[0] = $('.product-color').text();
             var $price = $('span.product-price').text().slice(1);
             // var weight =
             var $dimension = $('p.dimension').text();
@@ -43,7 +44,7 @@ exports.list = function(url, cb) {
                 url: $linkurl,
                 title: 'HERSCHEL SUPPLY - ' + $title,
                 partnumber: $partnumber,
-                color: $color,
+                colors: $colors,
                 price: $price,
                 dimension: $dimension,
                 description: $description,

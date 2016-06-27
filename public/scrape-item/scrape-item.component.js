@@ -10,21 +10,23 @@ component('scrapeItem', {
         $scope.getScrapePost = function getScrapePost() {
             // $scope.loading = true;
             //get the url link from the addItem.link (ng-model)
-            var link = {
-                url: $scope.addItem.link
-            };
-            if (link.url == "") {
-                console.log('please input the link!!!');
+            if (!$scope.addItem_url) {
+                $scope.isURLInputEmpty = true;
             } else {
-                console.log(link.url);
+                // console.log(link.url);
                 //route to the /api/additem/scrape, expressjs will take the scraping
+                var link = {
+                    url: $scope.addItem_url
+                };
                 scrapeAPI.getScrapeDetails(link)
                     .then(function(result) {
                         $scope.setImage = function setImage(imageUrl) {
                             $scope.mainImageUrl = imageUrl;
                         };
                         //show the detail frame
+                        $scope.isScraped = true;
                         $scope.showScrapeDetails = true;
+                        $scope.gotAddItem_url = true;
                         $scope.item = result.data;
                         $scope.setImage($scope.item.imageURLs[0]);
                     });
@@ -50,6 +52,11 @@ component('scrapeItem', {
                     }
                 }
             });
+        };
+
+        $scope.closeAlert = function() {
+            $scope.isURLInputEmpty = false;
+            $scope.isScraped = false;
         };
     }]
 });

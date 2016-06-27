@@ -5,7 +5,15 @@
             <input type="text" class="form-control" placeholder="Title" ng-model="addItem.title">
         </div> -->
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="(e.g. http://shop.herschelsupply.ca/collections/backpacks/products/little-america-backpack-black-1)" ng-model="addItem.link">
+          <uib-alert type="danger" ng-show="isURLInputEmpty" close="closeAlert()" dismiss-on-timeout=5000>Please make sure you input the URL!</uib-alert>
+        </div>
+
+        <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="(e.g. http://shop.herschelsupply.ca/collections/backpacks/products/little-america-backpack-black-1)"
+                   ng-model="addItem_url"
+                   ng-disabled="gotAddItem_url">
         </div>
 
         <!-- <div class="spinner" ng-show="loading">
@@ -14,6 +22,8 @@
         <div class="form-group mybtn">
           <button type="submit" class="btn btn-primary mybtn">Scrape</button>
         </div>
+
+
         <!-- <div class="listing-details" ng-show="showScrapeDetails"> -->
         <!-- <div class="form-group">
                 <div class="row listing-description-row">
@@ -33,6 +43,10 @@
     </form>
 </div>
 
+<div class="form-group">
+  <uib-alert type="success" ng-show="isScraped" close="closeAlert()" dismiss-on-timeout=10000>Loaded</uib-alert>
+</div>
+
 <div ng-show="showScrapeDetails">
     <img ng-src="{{mainImageUrl}}" class="item" />
 
@@ -47,14 +61,14 @@
     </ul>
 
     <div>
-        <button class="btn btn-primary" ng-click="saveScrapeItem()">Step 1. Save the item</button>
-        <button class="btn btn-primary" ng-click="openWeidianUpload()">Step 2. Upload to Weidian</button>
+        <button class="btn btn-primary mybtn" ng-click="saveScrapeItem()">Step 1. Save the item</button>
+        <button class="btn btn-primary mybtn" ng-click="openWeidianUpload()">Step 2. Upload to Weidian</button>
     </div>
 
     <ul class="specs">
         <li>
             <dl>
-                <dt>Price</dt>
+                <dt>Price (CAD)</dt>
                 <dd>{{item.price}}</dd>
             </dl>
         </li>
@@ -66,14 +80,20 @@
         </li>
         <li>
             <dl>
-                <dt>Color</dt>
-                <dd>{{item.color}}</dd>
+                <dt>Weight</dt>
+                <dd>{{item.weight}}</dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+              <dt>Color</dt>
+              <dd ng-repeat="color in item.colors">{{ color }}</dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>Detail Description</dt>
-                <dd ng-repeat="detail_desc in item.detail_descs">{{detail_desc}}</dd>
+                <dd ng-repeat="detail_desc in item.detail_descs">{{ detail_desc }}</dd>
             </dl>
         </li>
         <li>
