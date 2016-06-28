@@ -38,7 +38,7 @@ component('scrapeItem', {
                 .then(function(result) {
                     console.log(result);
                     savedScrapeItem = result.data;
-                    showAlert();
+                    showSuccessAlert();
                 });
         };
 
@@ -60,7 +60,7 @@ component('scrapeItem', {
             $scope.isScraped = false;
         };
 
-        function showAlert(ev) {
+        function showSuccessAlert(ev) {
           var alert = $mdDialog.alert()
                         .clickOutsideToClose(true)
                         .title('Success')

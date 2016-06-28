@@ -8,7 +8,16 @@ var TokenItem = require('./models/weidianToken.model');
 var appkey = '659335';
 var secret = '57371ee83d9f8b64f8a497af09ce1ffb';
 
-exports.getToken = function(callback) {
+exports.returnToken = function(req, res) {
+    getToken(function(result) {
+        console.log('hello world, this is the call back token');
+        console.log(result);
+        res.json(result);
+    })
+}
+
+
+function getToken(callback) {
     // var Token = {};
     TokenItem.findOne({})
         .sort({
@@ -18,29 +27,23 @@ exports.getToken = function(callback) {
             if (err) {
                 console.log(err);
             };
+            console.log(newToken);
+            // Token = newToken;
             if (!newToken || !validateToken(newToken)) {
-                console.log('no token existing, renewToken now')
-                renewToken(function(newToken){
-                  console.log('callback function: \n' + newToken);
-                  saveToken(newToken)
-                  callback(newToken);
-                  // res.json(newToken);
+                console.log('no token existing, renewToken now');
+                renewToken(function(newToken) {
+                    console.log('renew1: \n' + newToken);
+                    saveToken(newToken);
+                    newToken = JSON.parse(newToken); //JSON the return from renewToken, otherwise it's the String.
+                    callback(newToken);
                 });
-                // newToken = JSON.parse(newToken);
-
-                // requestToken();
-                // return res.send(newToken);
-                // return res.json(requestToken());
             } else {
                 console.log('the existing token is valid.');
                 console.log(newToken.result.access_token);
+                console.log(newToken);
                 callback(newToken);
-                // saveToken(newToken);
-                // res.json(newToken);
             };
-
         });
-
 };
 
 function validateToken(TokenObj) {

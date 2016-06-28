@@ -12,7 +12,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         titles: [],
         cate_id: "",
         free_delivery: "",
-        remote_free_delivery: ""
+        remote_free_delivery: "",
+        access_token: ""
     };
 
     $scope.imgs = savedScrapeItem.imageLocalURLs;
@@ -36,10 +37,10 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         "- " + savedScrapeItem.detail_descs.join("\n- ") +
         "\n\n" + customized_comment;
 
-    productDetail.itemName = productDetail.itemName.replace(/"/g,"'"); // change the double quote to single
+    productDetail.itemName = productDetail.itemName.replace(/"/g, "'"); // change the double quote to single
     $scope.itemName = productDetail.itemName;
     $scope.stock = "5"; //by default
-    var cny_price = Math.round(parseInt(savedScrapeItem.price)*1.12*5.2*1.20);
+    var cny_price = Math.round(parseInt(savedScrapeItem.price) * 1.12 * 5.2 * 1.20);
     $scope.est_price = savedScrapeItem.price + ' x 1.12 x 5.2 x 1.20 = ' + cny_price;
     $scope.price = cny_price;
     $scope.cate_id = "83115821"; // category for hs
@@ -49,19 +50,24 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
     $scope.remote_free_delivery = "0";
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
-        imgs.forEach(function(element, index) {
-                var imgFile = {
-                    img: element
-                };
-                uploadProductAPI.uploadImage(imgFile)
-                    .then(function(imgURL) {
-                        var dataObj = JSON.parse(imgURL.data);
-                        // console.log(dataObj.result);
-                        // console.log(imgURL);
-                        productDetail.bigImgs.push(dataObj.result);
-                        // console.log(productDetail.bigImgs);
-                        $scope.weidianImageURLs = productDetail.bigImgs;
-                    });
+        var access_token = "";
+        weidianTokenAPI.weidianGetToken()
+            .then(function(tokenObj) {
+                console.log(tokenObj);
+                access_token = tokenObj.data.result.access_token;
+                imgs.forEach(function(element, index) {
+                    var imgFile = {
+                        img: element,
+                        access_token: access_token
+                    };
+                    uploadProductAPI.uploadImage(imgFile)
+                        .then(function(imgURL) {
+                            var dataObj = JSON.parse(imgURL.data);
+                            productDetail.bigImgs = [];
+                            productDetail.bigImgs.push(dataObj.result);
+                            $scope.weidianImageURLs = productDetail.bigImgs;
+                        });
+                });
             });
     };
 
@@ -71,8 +77,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
       productDetail.stock = $scope.stock;
 
       for (i = 0; i < productDetail.bigImgs.length; i++) {
-        productDetail.titles.push('Product Image ' + (i+1));
-        console.log(productDetail.titles);
+          productDetail.titles.push('Product Image ' + (i + 1));
+          console.log(productDetail.titles);
       };
 
       productDetail.cate_id = $scope.cate_id;
@@ -80,11 +86,15 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
       productDetail.free_delivery = $scope.free_delivery;
       productDetail.remote_free_delivery = $scope.remote_free_delivery;
 
-      uploadProductAPI.uploadProduct(productDetail)
-       .then(function(result) {
-         console.log(result);
-       });
-
-
+      var access_token = "";
+      weidianTokenAPI.weidianGetToken()
+          .then(function(tokenObj) {
+            access_token = tokenObj.data.result.access_token;
+            productDetail.access_token = access_token;
+            uploadProductAPI.uploadProduct(productDetail)
+                .then(function(result) {
+                    console.log(result);
+                });
+          });
     };
 };

@@ -21,6 +21,6 @@ router.post('/uploadproduct', weidianController.uploadProduct);
 // router.post('/weidian/add', weidian_controller.addItem);
 
 // router.get('/renewtoken', weidianTokenController.renewToken);
-router.get('/gettoken', weidianTokenController.getToken);
+router.get('/gettoken', weidianTokenController.returnToken);
 
 module.exports = router;

@@ -5,9 +5,8 @@ var fs = require('fs');
 var tokenCtrl = require('./weidian.token.controller');
 
 exports.uploadImage = function(req, res) {
-    tokenCtrl.getToken(function(newToken) {
         var weidianAPI_url = 'http://api.vdian.com/media/upload';
-        var access_token = newToken.result.access_token;
+        var access_token = req.body.access_token;
         var uploadImgFile = 'public/' + req.body.img;
 
         var formdata = {
@@ -24,11 +23,9 @@ exports.uploadImage = function(req, res) {
             console.log('upload successful! response: ', body);
             res.json(body);
         });
-    });
 };
 
 exports.uploadProduct = function(req, res) {
-    tokenCtrl.getToken(function(newToken) {
         var weidianAPI_url = 'https://api.vdian.com/api';
         var param = {
             price: req.body.price,
@@ -41,17 +38,15 @@ exports.uploadProduct = function(req, res) {
             remote_free_delivery: req.body.remote_free_delivery
         };
 
-        var access_token = newToken.result.access_token;
         var public_params = {
             method: "vdian.item.add",
-            access_token: access_token,
+            access_token: req.body.access_token,
             version: "1.1",
             format: "json"
         };
 
         console.log(JSON.stringify(param));
         console.log(JSON.stringify(public_params));
-
 
         request.post({
             url: weidianAPI_url,
@@ -66,10 +61,7 @@ exports.uploadProduct = function(req, res) {
             console.log('upload successful! response: ', body);
             res.json(body);
         });
-
         // request.post({url:'http://service.com/upload', form: {key:'value'}}, function(err,httpResponse,body){ /* ... */ })
-
-    });
 };
 
 
