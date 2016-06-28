@@ -3,7 +3,7 @@
 angular.module('scrapeItem').
 component('scrapeItem', {
     templateUrl: 'scrape-item/scrape-item.template.html',
-    controller: ['$scope', 'scrapeAPI', 'saveItemAPI', '$uibModal', function AddItemController($scope, scrapeAPI, saveItemAPI, $uibModal) {
+    controller: ['$scope', 'scrapeAPI', 'saveItemAPI', '$uibModal', '$mdDialog', function AddItemController($scope, scrapeAPI, saveItemAPI, $uibModal, $mdDialog) {
         $scope.showScrapeDetails = false;
         var savedScrapeItem = {};
 
@@ -38,6 +38,7 @@ component('scrapeItem', {
                 .then(function(result) {
                     console.log(result);
                     savedScrapeItem = result.data;
+                    showAlert();
                 });
         };
 
@@ -57,6 +58,19 @@ component('scrapeItem', {
         $scope.closeAlert = function() {
             $scope.isURLInputEmpty = false;
             $scope.isScraped = false;
+        };
+
+        function showAlert(ev) {
+          var alert = $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Success')
+                        .textContent('The job has been completed.')
+                        .ok('OK')
+                        .targetEvent(ev);
+          $mdDialog.show(alert)
+              .finally(function() {
+                alert = undefined;
+              });
         };
     }]
 });

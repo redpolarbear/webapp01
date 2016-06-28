@@ -6,5 +6,6 @@ angular.module('itemApp', [
   'ngResource',
   'scrapeItem',
   'ngAnimate',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngMaterial'
 ]);

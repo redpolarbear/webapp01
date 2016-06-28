@@ -3,5 +3,6 @@
 angular.module('scrapeItem',[
   'ngRoute',
   'ngAnimate',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngMaterial'
 ]);

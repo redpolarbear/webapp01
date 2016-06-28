@@ -50,7 +50,7 @@ exports.itemSave = function(req, res) {
     var imgs_local_names = [];
 
     imgs.forEach(function(item, index) {
-        var random = utils.randomizer(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        var random = utils.randomizer(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
         var filename = 'images/item_imgs/' + random + '.png'
         newScrapeItem.imageLocalURLs[index] = filename;
         utils.downloadURI(imgs[index], 'public/' + filename, function(filename) {

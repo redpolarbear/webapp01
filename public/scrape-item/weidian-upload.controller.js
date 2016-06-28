@@ -21,17 +21,17 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
         if (string) {
             return string;
         } else {
-            return "";
+            return "N/A";
         };
     };
 
     var customized_comment = "备注：根据中国海关规定，境外发往中国的包裹，必须提交收货人身份证信息清关。\n为了能尽快发出包裹，请您在下单之后关注微信订阅号（亚瑟的Funky俱乐部），并联系上传收件人的身份证正反面，我们将保证您的个人信息安全。"
 
     productDetail.itemName = "【加拿大直邮含税】 " + isDefined(savedScrapeItem.title) + "\n" +
-        "\n" + isDefined(savedScrapeItem.partnumber) + "\n" +
-        "\n" + isDefined(savedScrapeItem.color) + "\n" +
-        "\n" + isDefined(savedScrapeItem.dimension) + "\n" +
-        "\n" + isDefined(savedScrapeItem.weight) + "\n" +
+        "\nPartnumber: " + isDefined(savedScrapeItem.partnumber) + "\n" +
+        "\nColors:\n-" + isDefined(savedScrapeItem.colors).join("\n- ") + "\n" +
+        "\nDimension: " + isDefined(savedScrapeItem.dimension) + "\n" +
+        "\nWeight: " + isDefined(savedScrapeItem.weight) + "\n" +
         "\n" + isDefined(savedScrapeItem.description) + "\n" +
         "- " + savedScrapeItem.detail_descs.join("\n- ") +
         "\n\n" + customized_comment;
