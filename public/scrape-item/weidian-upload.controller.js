@@ -1,9 +1,9 @@
 angular.module('scrapeItem')
     .controller('weidianUploadCtrl', weidianUploadCtrl);
 
-weidianUploadCtrl.$inject = ['$scope', 'weidianTokenAPI', 'uploadProductAPI', '$uibModalInstance', 'savedScrapeItem'];
+weidianUploadCtrl.$inject = ['$scope', 'weidianTokenAPI', 'uploadProductAPI', '$uibModalInstance', 'savedScrapeItem', '$mdDialog'];
 
-function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalInstance, savedScrapeItem) {
+function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalInstance, savedScrapeItem, $mdDialog) {
     var productDetail = {
         itemName: "",
         price: "",
@@ -51,6 +51,7 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
         var access_token = "";
+        productDetail.bigImgs = [];
         weidianTokenAPI.weidianGetToken()
             .then(function(tokenObj) {
                 console.log(tokenObj);
@@ -62,39 +63,53 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                     };
                     uploadProductAPI.uploadImage(imgFile)
                         .then(function(imgURL) {
-                            var dataObj = JSON.parse(imgURL.data);
-                            productDetail.bigImgs = [];
+                            var dataObj = JSON.parse(imgURL.data); //return obj.data = String, so need the JSON.parse();
                             productDetail.bigImgs.push(dataObj.result);
                             $scope.weidianImageURLs = productDetail.bigImgs;
                         });
                 });
+                showSuccessAlert();
             });
     };
 
     $scope.uploadProducttoWeidian = function uploadProducttoWeidian() {
-      productDetail.itemName = $scope.itemName;
-      productDetail.price = $scope.price;
-      productDetail.stock = $scope.stock;
+        productDetail.itemName = $scope.itemName;
+        productDetail.price = $scope.price;
+        productDetail.stock = $scope.stock;
 
-      for (i = 0; i < productDetail.bigImgs.length; i++) {
-          productDetail.titles.push('Product Image ' + (i + 1));
-          console.log(productDetail.titles);
-      };
+        for (i = 0; i < productDetail.bigImgs.length; i++) {
+            productDetail.titles.push('Product Image ' + (i + 1));
+            console.log(productDetail.titles);
+        };
 
-      productDetail.cate_id = $scope.cate_id;
+        productDetail.cate_id = $scope.cate_id;
 
-      productDetail.free_delivery = $scope.free_delivery;
-      productDetail.remote_free_delivery = $scope.remote_free_delivery;
+        productDetail.free_delivery = $scope.free_delivery;
+        productDetail.remote_free_delivery = $scope.remote_free_delivery;
 
-      var access_token = "";
-      weidianTokenAPI.weidianGetToken()
-          .then(function(tokenObj) {
-            access_token = tokenObj.data.result.access_token;
-            productDetail.access_token = access_token;
-            uploadProductAPI.uploadProduct(productDetail)
-                .then(function(result) {
-                    console.log(result);
-                });
+        var access_token = "";
+        weidianTokenAPI.weidianGetToken()
+            .then(function(tokenObj) {
+                access_token = tokenObj.data.result.access_token;
+                productDetail.access_token = access_token;
+                uploadProductAPI.uploadProduct(productDetail)
+                    .then(function(result) {
+                        console.log(result);
+                        var idObj = JSON.parse(result.data); //return obj.data = String, so need the JSON.parse();
+                        $scope.item_id = idObj.result.item_id;
+                    });
+            });
+    };
+
+    function showSuccessAlert() {
+      var alert = $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('Success')
+                    .textContent('The job has been completed.')
+                    .ok('OK');
+      $mdDialog.show(alert)
+          .finally(function() {
+            alert = undefined;
           });
     };
 };

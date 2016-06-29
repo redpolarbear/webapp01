@@ -10,11 +10,10 @@ var secret = '57371ee83d9f8b64f8a497af09ce1ffb';
 
 exports.returnToken = function(req, res) {
     getToken(function(result) {
-        console.log('hello world, this is the call back token');
-        console.log(result);
+        // console.log(result);
         res.json(result);
-    })
-}
+    });
+};
 
 
 function getToken(callback) {
@@ -27,20 +26,20 @@ function getToken(callback) {
             if (err) {
                 console.log(err);
             };
-            console.log(newToken);
+            // console.log(newToken);
             // Token = newToken;
             if (!newToken || !validateToken(newToken)) {
                 console.log('no token existing, renewToken now');
                 renewToken(function(newToken) {
-                    console.log('renew1: \n' + newToken);
+                    // console.log('renew1: \n' + newToken);
                     saveToken(newToken);
                     newToken = JSON.parse(newToken); //JSON the return from renewToken, otherwise it's the String.
                     callback(newToken);
                 });
             } else {
-                console.log('the existing token is valid.');
-                console.log(newToken.result.access_token);
-                console.log(newToken);
+                // console.log('the existing token is valid.');
+                // console.log(newToken.result.access_token);
+                // console.log(newToken);
                 callback(newToken);
             };
         });
@@ -70,7 +69,7 @@ function renewToken(callback) {
 
     request.get(weidianAPI_url, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-            console.log(body);
+            // console.log(body);
             callback(body);
             // saveToken(res.json(body));
             // return: {
@@ -99,8 +98,8 @@ function saveToken(return_token) {
         if (err) {
             console.log(err);
         } else {
-            console.log('Token saved successfully: \n' + newToken);
-            console.log(newToken.result.access_token);
+            console.log('Token saved successfully!');
+            // console.log(newToken.result.access_token);
             // callback(newToken);
             // return newToken;
         }

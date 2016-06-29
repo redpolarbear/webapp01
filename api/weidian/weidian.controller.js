@@ -20,7 +20,7 @@ exports.uploadImage = function(req, res) {
             if (err) {
                 return console.error('upload failed: ', err);
             };
-            console.log('upload successful! response: ', body);
+            // console.log('upload successful! response: ', body);
             res.json(body);
         });
 };
@@ -45,8 +45,8 @@ exports.uploadProduct = function(req, res) {
             format: "json"
         };
 
-        console.log(JSON.stringify(param));
-        console.log(JSON.stringify(public_params));
+        // console.log(JSON.stringify(param));
+        // console.log(JSON.stringify(public_params));
 
         request.post({
             url: weidianAPI_url,
@@ -58,7 +58,7 @@ exports.uploadProduct = function(req, res) {
             if (err) {
                 return console.error('upload failed: ', err);
             };
-            console.log('upload successful! response: ', body);
+            // console.log('upload successful! response: ', body);
             res.json(body);
         });
         // request.post({url:'http://service.com/upload', form: {key:'value'}}, function(err,httpResponse,body){ /* ... */ })

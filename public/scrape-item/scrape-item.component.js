@@ -60,13 +60,12 @@ component('scrapeItem', {
             $scope.isScraped = false;
         };
 
-        function showSuccessAlert(ev) {
+        function showSuccessAlert() {
           var alert = $mdDialog.alert()
                         .clickOutsideToClose(true)
                         .title('Success')
                         .textContent('The job has been completed.')
-                        .ok('OK')
-                        .targetEvent(ev);
+                        .ok('OK');
           $mdDialog.show(alert)
               .finally(function() {
                 alert = undefined;
