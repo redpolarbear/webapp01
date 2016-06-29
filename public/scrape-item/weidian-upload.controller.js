@@ -30,7 +30,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
     productDetail.itemName = "【加拿大直邮含税】 " + isDefined(savedScrapeItem.title) + "\n" +
         "\nPartnumber: " + isDefined(savedScrapeItem.partnumber) + "\n" +
-        "\nColors:\n-" + isDefined(savedScrapeItem.colors).join("\n- ") + "\n" +
+        "\nColors:\n- " + isDefined(savedScrapeItem.colors).join("\n- ") + "\n" +
+        "\nSizes:\n- " + isDefined(savedScrapeItem.sizes).join("\n- ") + "\n" +
         "\nDimension: " + isDefined(savedScrapeItem.dimension) + "\n" +
         "\nWeight: " + isDefined(savedScrapeItem.weight) + "\n" +
         "\n" + isDefined(savedScrapeItem.description) + "\n" +
@@ -68,7 +69,6 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                             $scope.weidianImageURLs = productDetail.bigImgs;
                         });
                 });
-                showSuccessAlert();
             });
     };
 
@@ -97,19 +97,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                         console.log(result);
                         var idObj = JSON.parse(result.data); //return obj.data = String, so need the JSON.parse();
                         $scope.item_id = idObj.result.item_id;
+                        $scope.gotItem_id = true;
                     });
             });
-    };
-
-    function showSuccessAlert() {
-      var alert = $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Success')
-                    .textContent('The job has been completed.')
-                    .ok('OK');
-      $mdDialog.show(alert)
-          .finally(function() {
-            alert = undefined;
-          });
     };
 };

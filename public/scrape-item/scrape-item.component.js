@@ -71,5 +71,5 @@ component('scrapeItem', {
                 alert = undefined;
               });
         };
-    }];
+    }]
 });
