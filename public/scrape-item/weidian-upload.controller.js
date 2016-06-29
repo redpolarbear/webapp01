@@ -47,15 +47,15 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
     // $scope.cate =
 
     $scope.free_delivery = "1";
-    $scope.remote_free_delivery = "0";
+    $scope.remote_free_delivery = "1";
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
         var access_token = "";
         productDetail.bigImgs = [];
         weidianTokenAPI.weidianGetToken()
             .then(function(tokenObj) {
-                console.log(tokenObj);
-                access_token = tokenObj.data.result.access_token;
+                // console.log(tokenObj);
+                access_token = tokenObj.data.result.access_token; //callback return is the JSON
                 imgs.forEach(function(element, index) {
                     var imgFile = {
                         img: element,
@@ -79,7 +79,7 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
         for (i = 0; i < productDetail.bigImgs.length; i++) {
             productDetail.titles.push('Product Image ' + (i + 1));
-            console.log(productDetail.titles);
+            // console.log(productDetail.titles);
         };
 
         productDetail.cate_id = $scope.cate_id;

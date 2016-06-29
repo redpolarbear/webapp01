@@ -41,10 +41,6 @@ exports.list = function(url, cb) {
             $('#skuColours > ul > li > a > img').each(function(i, elem) {
                 $colors[i] = $(this).attr('title');
             }); //ok
-            // var $img = 'http:' + $('img.product-image').attr('src');
-            // var $desc = $('.heightContainer img').attr('alt');
-
-
 
             var mec_item = {
                 // imageURLs: $img,
