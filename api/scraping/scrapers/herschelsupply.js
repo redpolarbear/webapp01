@@ -15,12 +15,14 @@ exports.list = function(url, cb) {
             var herschelsupply_item = {};
 
             var $linkurl = url;
-            var $title = $('h2[itemprop="name"]').html();
-            var $color = $('.product-color').html();
-            var $price = $('span.product-price').html();
+            var $title = $('h2[itemprop="name"]').text();
+            var $partnumber = $('.sku').text();
+            var $colors =[];
+            $colors[0] = $('.product-color').text();
+            var $price = $('span.product-price').text().slice(1);
             // var weight =
-            var $dimension = $('p.dimension').html();
-            var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').html();
+            var $dimension = $('p.dimension').text();
+            var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').text();
 
             var $detail_descs = [];
             $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > ul > li').each(function(i, elem) {
@@ -40,8 +42,9 @@ exports.list = function(url, cb) {
             var herschelsupply_item = {
                 // imageURLs: $img,
                 url: $linkurl,
-                title: $title,
-                color: $color,
+                title: 'HERSCHEL SUPPLY - ' + $title,
+                partnumber: $partnumber,
+                colors: $colors,
                 price: $price,
                 dimension: $dimension,
                 description: $description,

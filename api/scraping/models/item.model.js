@@ -6,7 +6,10 @@ var Schema = mongoose.Schema;
 var ItemSchema = new Schema({
   url: String,
   title: String,
-  color: String,
+  partnumber: String,
+  colors: [{
+    type: String
+  }],
   price: String,
   weight: String,
   dimension: String,

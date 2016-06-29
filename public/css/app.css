@@ -22,9 +22,13 @@ h1 {
     padding-bottom: 1em;
     width: 100px;
 }
-
-/* View: Phone detail */
-
+.mybtn {
+  text-align: center;
+}
+.mybtn button {
+  margin-left: 1.2em;
+  margin-right: 1.2em;
+}
 .item {
     background-color: white;
     border: 1px solid black;
@@ -40,9 +44,9 @@ h1 {
     margin: 0;
 }
 .item-thumbs img {
-    height: 100px;
+    height: 150px;
     padding: 1em;
-    width: 100px;
+    width: 150px;
 }
 .item-thumbs li {
     background-color: white;
@@ -50,6 +54,18 @@ h1 {
     cursor: pointer;
     display: inline-block;
     margin: 1em;
+}
+.item-thumbs-modal li {
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 1em;
+}
+.item-thumbs-modal img {
+    height: 100px;
+    padding: 0.7em;
+    width: 100px;
 }
 .specs {
     clear: both;

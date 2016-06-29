@@ -1,0 +1,44 @@
+https://api.vdian.com/api?param=
+{
+  "price":"1.5",
+  "stock":"5",
+  "itemName":"接口测试商品1",
+  "sku":[{
+    "stock":1,
+    "title":"型号1",
+    "price":"1"
+    },{
+    "stock":1,
+    "title":"型号2",
+    "price":"1.5"}],
+  "bigImgs":[
+    "http://wd.geilicdn.com/vshop395640-1390204649-1.jpg",
+    "http://wd.geilicdn.com/vshop395640-1390204649-2.jpg"],
+  "titles":[
+    "图片1",
+    "图片2"],
+  "cate_id":"747864,747860",
+  "free_delivery":"1",
+  "remote_free_delivery":"1"
+}
+&public={
+    "method":"vdian.item.add",
+    "access_token":"xxx",
+    "version":"1.1",
+    "format":"json"
+}
+
+参数名称类型是否必须字段说明
+param OBJECT  false 业务参数
+└ remote_free_delivery  STRING  true  偏远地区是否包邮：1不包邮，0包邮
+└ bigImgs ARRAY true  商品图片
+└ titles  ARRAY true 商品图片描述
+└ free_delivery STRING  true  是否包邮：0不包邮，1包邮
+└ stock STRING  true  库存量
+└ price STRING  true  商品价格
+sku ARRAY false sku数组
+  └ stock NUMBER  false 库存量
+  └ price STRING  false 价格
+  └ title STRING  false sku名称
+└ cate_id STRING  true  商品分类 id，多个分类通过“,”分割
+└ itemName  STRING  true  如：“这个是一段商品描述” 最多6000个字符（注意：请使用POST方式调用）

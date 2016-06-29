@@ -11,6 +11,8 @@ var utils = require('../utils/utils.js');
 var scrapers = {};
 
 scrapers['herschelsupply'] = require('./scrapers/herschelsupply');
+scrapers['mec'] = require('./scrapers/mec');
+
 
 exports.scrape = function(req, res) {
     var url = req.body.url;
@@ -18,9 +20,11 @@ exports.scrape = function(req, res) {
 
     if (url.indexOf("herschelsupply") > -1) {
         scraperToUse = 'herschelsupply';
+    } else if (url.indexOf("mec.ca") > -1) {
+        scraperToUse = 'mec';
     } else {
-        console.log('cannot locate scraper');
-    }
+      console.log('cannot locate scraper');
+    };
 
     scrapers[scraperToUse].list(url, function(data) {
         // console.log('data from scraper: ', data);
@@ -31,9 +35,11 @@ exports.scrape = function(req, res) {
 exports.itemSave = function(req, res) {
     var newScrapeItem = new scrapeItem();
     newScrapeItem.url = req.body.url;
-    newScrapeItem.color = req.body.color;
+    newScrapeItem.partnumber = req.body.partnumber;
+    newScrapeItem.colors = req.body.colors;
     newScrapeItem.title = req.body.title;
     newScrapeItem.price = req.body.price;
+    newScrapeItem.weight = req.body.weight;
     newScrapeItem.dimension = req.body.dimension;
     newScrapeItem.description = req.body.description;
     newScrapeItem.detail_descs = req.body.detail_descs;
@@ -44,7 +50,7 @@ exports.itemSave = function(req, res) {
     var imgs_local_names = [];
 
     imgs.forEach(function(item, index) {
-        var random = utils.randomizer(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        var random = utils.randomizer(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
         var filename = 'images/item_imgs/' + random + '.png'
         newScrapeItem.imageLocalURLs[index] = filename;
         utils.downloadURI(imgs[index], 'public/' + filename, function(filename) {
