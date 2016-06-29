@@ -3,6 +3,8 @@
 var request = require('request');
 var fs = require('fs');
 var tokenCtrl = require('./weidian.token.controller');
+var scrapeItem = require('../scraping/models/item.model');
+var weidianItem = require('./models/weidianProduct.model');
 
 exports.uploadImage = function(req, res) {
         var weidianAPI_url = 'http://api.vdian.com/media/upload';
@@ -62,6 +64,23 @@ exports.uploadProduct = function(req, res) {
             res.json(body);
         });
         // request.post({url:'http://service.com/upload', form: {key:'value'}}, function(err,httpResponse,body){ /* ... */ })
+};
+
+exports.saveProduct = function(req, res) {
+    var newWeidianItem = new weidianItem();
+    newWeidianItem.item_id = req.body.item_id;
+    newWeidianItem.scrapeItem_id = req.body.scrapeItem_id;
+
+    newWeidianItem.save(function(err, newWeidianItem) {
+        if (err) {
+            res.send('error saving the Weiding Product.');
+        } else {
+            console.log(newWeidianItem);
+            res.send(newWeidianItem);
+        };
+
+    });
+
 };
 
 

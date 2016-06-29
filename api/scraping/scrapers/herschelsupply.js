@@ -22,7 +22,7 @@ exports.list = function(url, cb) {
             var $colors = [];
             $colors[0] = $('.product-color').text();
             var $price = $('span.product-price').text().slice(1);
-            var weight = "N/A";
+            var $weight = "N/A";
             var $dimension = $('p.dimension').text();
             var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').text();
 

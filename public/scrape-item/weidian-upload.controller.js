@@ -101,4 +101,17 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                     });
             });
     };
+
+    $scope.saveUploadedProduct = function saveUploadedProduct() {
+        var weidianProductInfo = {
+            item_id: $scope.item_id,
+            scrapeItem_id: savedScrapeItem._id
+        };
+
+        uploadProductAPI.saveProduct(weidianProductInfo)
+         .then(function(savedItem) {
+            console.log(savedItem);
+        });
+
+    };
 };
