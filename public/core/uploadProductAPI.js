@@ -9,7 +9,8 @@ uploadProductAPI.$inject = ['$http'];
 function uploadProductAPI($http) {
   return {
       uploadProduct: uploadProduct,
-      uploadImage: uploadImage
+      uploadImage: uploadImage,
+      saveProduct: saveProduct
   };
 
   function uploadProduct(productDetail) {
@@ -18,5 +19,9 @@ function uploadProductAPI($http) {
 
   function uploadImage(imgFile) {
     return $http.post('/api/uploadimage', imgFile);
+  };
+
+  function saveProduct(weidianProductInfo) {
+      return $http.post('api/saveproduct', weidianProductInfo);
   };
 };

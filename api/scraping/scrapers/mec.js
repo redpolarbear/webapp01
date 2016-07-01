@@ -17,6 +17,8 @@ exports.list = function(url, cb) {
             var $linkurl = url;
             var $title = $('#gearNotes > p:nth-child(1) > b').text(); //ok
             var $partnumber = $('#gearNotes > p:nth-child(2) > span.prNm').text().slice(16); //ok
+            var $sizes = [];
+            $sizes[0] = 'N/A';
             var $price = $('#idPrdPrice > span:nth-child(1)').text();
             var price_length = $price.length;
             $price = $price.slice(1, price_length - 7); //ok
@@ -41,10 +43,6 @@ exports.list = function(url, cb) {
             $('#skuColours > ul > li > a > img').each(function(i, elem) {
                 $colors[i] = $(this).attr('title');
             }); //ok
-            // var $img = 'http:' + $('img.product-image').attr('src');
-            // var $desc = $('.heightContainer img').attr('alt');
-
-
 
             var mec_item = {
                 // imageURLs: $img,
@@ -52,6 +50,7 @@ exports.list = function(url, cb) {
                 title: 'MEC - ' + $title,
                 partnumber: $partnumber,
                 colors: $colors,
+                sizes: $sizes,
                 weight: $weight,
                 price: $price,
                 dimension: $dimension,

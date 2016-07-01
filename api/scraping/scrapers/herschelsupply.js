@@ -17,10 +17,12 @@ exports.list = function(url, cb) {
             var $linkurl = url;
             var $title = $('h2[itemprop="name"]').text();
             var $partnumber = $('.sku').text();
-            var $colors =[];
+            var $sizes = [];
+            $sizes[0] = "N/A";
+            var $colors = [];
             $colors[0] = $('.product-color').text();
             var $price = $('span.product-price').text().slice(1);
-            // var weight =
+            var $weight = "N/A";
             var $dimension = $('p.dimension').text();
             var $description = $('#product-details > div.middle-block.large-4.medium-4.small-12.columns.left > p').text();
 
@@ -44,6 +46,8 @@ exports.list = function(url, cb) {
                 url: $linkurl,
                 title: 'HERSCHEL SUPPLY - ' + $title,
                 partnumber: $partnumber,
+                sizes: $sizes,
+                weight: $weight,
                 colors: $colors,
                 price: $price,
                 dimension: $dimension,

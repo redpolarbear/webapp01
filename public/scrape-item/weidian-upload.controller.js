@@ -30,7 +30,8 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
     productDetail.itemName = "【加拿大直邮含税】 " + isDefined(savedScrapeItem.title) + "\n" +
         "\nPartnumber: " + isDefined(savedScrapeItem.partnumber) + "\n" +
-        "\nColors:\n-" + isDefined(savedScrapeItem.colors).join("\n- ") + "\n" +
+        "\nColors:\n- " + isDefined(savedScrapeItem.colors).join("\n- ") + "\n" +
+        "\nSizes:\n- " + isDefined(savedScrapeItem.sizes).join("\n- ") + "\n" +
         "\nDimension: " + isDefined(savedScrapeItem.dimension) + "\n" +
         "\nWeight: " + isDefined(savedScrapeItem.weight) + "\n" +
         "\n" + isDefined(savedScrapeItem.description) + "\n" +
@@ -47,15 +48,15 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
     // $scope.cate =
 
     $scope.free_delivery = "1";
-    $scope.remote_free_delivery = "0";
+    $scope.remote_free_delivery = "1";
 
     $scope.uploadImgtoWeidian = function uploadImgtoWeidian(imgs) {
         var access_token = "";
         productDetail.bigImgs = [];
         weidianTokenAPI.weidianGetToken()
             .then(function(tokenObj) {
-                console.log(tokenObj);
-                access_token = tokenObj.data.result.access_token;
+                // console.log(tokenObj);
+                access_token = tokenObj.data.result.access_token; //callback return is the JSON
                 imgs.forEach(function(element, index) {
                     var imgFile = {
                         img: element,
@@ -68,7 +69,6 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                             $scope.weidianImageURLs = productDetail.bigImgs;
                         });
                 });
-                showSuccessAlert();
             });
     };
 
@@ -79,7 +79,7 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
 
         for (i = 0; i < productDetail.bigImgs.length; i++) {
             productDetail.titles.push('Product Image ' + (i + 1));
-            console.log(productDetail.titles);
+            // console.log(productDetail.titles);
         };
 
         productDetail.cate_id = $scope.cate_id;
@@ -97,19 +97,21 @@ function weidianUploadCtrl($scope, weidianTokenAPI, uploadProductAPI, $uibModalI
                         console.log(result);
                         var idObj = JSON.parse(result.data); //return obj.data = String, so need the JSON.parse();
                         $scope.item_id = idObj.result.item_id;
+                        $scope.gotItem_id = true;
                     });
             });
     };
 
-    function showSuccessAlert() {
-      var alert = $mdDialog.alert()
-                    .clickOutsideToClose(true)
-                    .title('Success')
-                    .textContent('The job has been completed.')
-                    .ok('OK');
-      $mdDialog.show(alert)
-          .finally(function() {
-            alert = undefined;
-          });
+    $scope.saveUploadedProduct = function saveUploadedProduct() {
+        var weidianProductInfo = {
+            item_id: $scope.item_id,
+            scrapeItem_id: savedScrapeItem._id
+        };
+
+        uploadProductAPI.saveProduct(weidianProductInfo)
+         .then(function(savedItem) {
+            console.log(savedItem);
+        });
+
     };
 };

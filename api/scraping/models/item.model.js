@@ -10,6 +10,9 @@ var ItemSchema = new Schema({
   colors: [{
     type: String
   }],
+  sizes: [{
+      type: String
+  }],
   price: String,
   weight: String,
   dimension: String,
