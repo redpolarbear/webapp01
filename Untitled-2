@@ -1,0 +1,200 @@
+{
+  "title": "Hotty Hot Short",
+  "partnumber": "N/A",
+  "price": "$58.00 CAD",
+  "skus": [
+    {
+      "color": "hero blue",
+      "sizes": [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "pop cut boom juice multi/black",
+      "sizes": [
+        "2 (out of stock)",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "tidal trip boom juice/boom juice",
+      "sizes": [
+        "2 (out of stock)",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "flash light",
+      "sizes": [
+        "2 (out of stock)",
+        "4 (out of stock)",
+        "6 (out of stock)",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "black",
+      "sizes": [
+        "2 (out of stock)",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "white",
+      "sizes": [
+        "2 (out of stock)",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "color": "freckle flower white seal grey/seal grey",
+      "sizes": [
+        "2 (out of stock)",
+        "4 (out of stock)",
+        "6 (out of stock)",
+        "8 (out of stock)",
+        "10",
+        "12"
+      ]
+    }
+  ],
+  "description": "Max out your stride in these shorts designed with extra room to let you move freely.",
+  "desc_details": [
+    {
+      "head": "Swift Ultra",
+      "desc": "Woven for strength and no-bulk performance—Swift Ultra fabric is sweat-wicking, four-way stretch and durable",
+      "list": [
+        "durable",
+        "no-bulk performance",
+        "woven for strength",
+        "four-way stretch",
+        "sweat-wicking"
+      ]
+    },
+    {
+      "head": "Mesh",
+      "desc": "Breathable Mesh fabric is lightweight and sweat-wicking",
+      "list": [
+        "breathable",
+        "lightweight",
+        "sweat-wicking"
+      ]
+    },
+    {
+      "head": "LYCRA®",
+      "desc": "Added LYCRA® fibre for great shape retention",
+      "list": [
+        "stretch",
+        "great shape retention",
+        "long-lasting comfort"
+      ]
+    }
+  ],
+  "imageURLs": [
+    {
+      "colorName": "hero blue",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_F?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_023188_G?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "pop cut boom juice multi/black",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_F?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_024838_G?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "tidal trip boom juice/boom juice",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_F?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7A28S_025038_G?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "flash light",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_6908_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_6908_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_6908_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_6908_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_6908_E?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "black",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_F?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_G?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7997S_0001_H?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "white",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE0S_0002_F?$gsr-pdt-qrtr-lg$"
+      ]
+    },
+    {
+      "colorName": "freckle flower white seal grey/seal grey",
+      "imageUrls": [
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_A?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_B?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_C?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_D?$gsr-pdt-half-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_E?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_F?$gsr-pdt-qrtr-lg$",
+        "https://images.lululemon.com/is/image/lululemon/LW7FE1S_024721_G?$gsr-pdt-qrtr-lg$"
+      ]
+    }
+  ]
+}

@@ -12,6 +12,7 @@ var scrapers = {};
 
 scrapers['herschelsupply'] = require('./scrapers/herschelsupply');
 scrapers['mec'] = require('./scrapers/mec');
+scrapers['lululemon'] = require('./scrapers/lululemon');
 
 
 exports.scrape = function(req, res) {
@@ -22,6 +23,8 @@ exports.scrape = function(req, res) {
         scraperToUse = 'herschelsupply';
     } else if (url.indexOf("mec.ca") > -1) {
         scraperToUse = 'mec';
+    } else if (url.indexOf("lululemon.com") > -1) {
+        scraperToUse = 'lululemon';
     } else {
       console.log('cannot locate scraper');
     };
