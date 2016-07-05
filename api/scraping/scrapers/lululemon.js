@@ -13,10 +13,11 @@ exports.list = function (url, cb) {
         var $weight = 'N/A';
         var $dimension = 'N/A';
         var $description = lululemon.description;
-        var $sizes = 'Please see the COLORS!';
+        var $sizes = [];
+        $sizes[0] = 'Please see the COLORS!';
         var $colors = [];
         for (var i = 0; i < lululemon.skus.length; i++) {
-            $colors.push(lululemon.skus[i].color + "\n-- " + lululemon.skus[i].sizes.join(", "));
+            $colors.push(lululemon.skus[i].color + "\n- " + lululemon.skus[i].sizes.join(", "));
         };
 //        console.log($colors);
         var $detail_descs = [];
@@ -45,16 +46,8 @@ exports.list = function (url, cb) {
             , detail_descs: $detail_descs
             , imageURLs: $imageURLs
         };
-
-
-
-
-
         cb(lululemon_item);
-
     });
-
-
 };
 
 function getLululemon(url, callback) {
