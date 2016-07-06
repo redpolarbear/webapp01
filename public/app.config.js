@@ -10,8 +10,8 @@ angular.
           template: '<scrape-item></scrape-item>'
         }).
         otherwise('/scrapeitem');
-      // $locationProvider.hashPrefix('!');
+
       $locationProvider.html5Mode(true);
-      // .hashPrefix('!');
+
     }
   ]);

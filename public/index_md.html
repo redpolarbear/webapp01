@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" ng-app="webApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Arthur's funky CLUB</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body ng-app="webAPP" ng-cloak>
+    <md-toolbar layout="row">
+      <h1>Welcome to Arthur's funky CLUB</h1>
+    </md-toolbar>
+
+    <div flex layout="row">
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+            <md-list>
+                <md-list-item>
+                    <md-button>hello</md-button>
+                </md-list-item>
+            </md-list>
+
+            <md-list>
+                <md-list-item>
+                    <md-button>world</md-button>
+                </md-list-item>
+            </md-list>
+
+        </md-sidenav>
+
+        <md-content flex id="content">
+            <h2>llllkjjkkdkkdkdk</h2>
+            <p>
+                djfldjf;lasjf;lakjs;fdljka;f
+            </p>
+
+        </md-content>
+
+    </div>
+
+
+
+<!--
+     <add-item></add-item>
+    <div ng-view></div>
+-->
+
+
+
+
+
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-touch/angular-touch.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+
+    <script src="webapp.module.js"></script>
+    <script src="webapp.config.js"></script>
+    <script src="core/scrapeAPI.js"></script>
+    <script src="core/saveItemAPI.js"></script>
+    <script src="core/uploadProductAPI.js"></script>
+    <script src="core/weidianTokenAPI.js"></script>
+
+    <script src="scrape-item/scrape-item.module.js"></script>
+    <script src="scrape-item/scrape-item.component.js"></script>
+    <script src="scrape-item/weidian-upload.controller.js"></script>
+  </body>
+</html>
